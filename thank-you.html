@@ -24,5 +24,14 @@
         <p>곧 담당자가 연락드리겠습니다.</p>
         <a href="index.html" class="back-button">메인으로 돌아가기</a>
     </div>
+
+    <!-- 페이지 로드 시 데이터 레이어를 통해 전환 이벤트 및 페이지 뷰 정보 추가 -->
+    <script>
+        dataLayer.push({
+            'event': 'reservation_complete', // 전환 이벤트로 설정할 이벤트 이름
+            'page_path': window.location.pathname + window.location.search,
+            'traffic_source': document.referrer || 'direct'
+        });
+    </script>
 </body>
-</html> 
+</html>

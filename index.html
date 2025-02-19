@@ -34,7 +34,8 @@
         <section class="hero">
             <h1>당신의 건강한 삶을 위한 첫걸음</h1>
             <p>전문적인 치료와 따뜻한 케어로 함께하겠습니다</p>
-            <a href="thank-you.html" class="cta-button">예약하기</a>
+            <!-- 예약하기 버튼에 데이터 레이어를 추가하여 클릭 이벤트를 추적 -->
+            <a href="thank-you.html" class="cta-button" onclick="dataLayer.push({'event': 'reservation_click'});">예약하기</a>
         </section>
 
         <section id="about" class="about">
@@ -69,7 +70,16 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 인지 치료센터. All rights reserved.</p>
+        <p>© 2024 인지 치료센터. All rights reserved.</p>
     </footer>
+
+    <!-- 페이지 로드 시 데이터 레이어를 통해 트래픽 소스 및 페이지 뷰 정보 추가 -->
+    <script>
+        dataLayer.push({
+            'event': 'page_view',
+            'page_path': window.location.pathname + window.location.search,
+            'traffic_source': document.referrer || 'direct'
+        });
+    </script>
 </body>
-</html> 
+</html>
