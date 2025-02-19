@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 완료 - 인지 치료센터</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // 리퍼러 정보 가져오기
+        const referrer = document.referrer;
+        
+        // 더 자세한 전환 이벤트 발생
+        gtag('event', 'conversion', {
+            'event_category': '예약',
+            'event_label': '예약 완료',
+            'referrer_url': referrer,  // 실제 참조 URL 추가
+            'referrer_details': {
+                'full_url': referrer,
+                'timestamp': new Date().toISOString()
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>예약이 완료되었습니다</h1>
+        <p>곧 담당자가 연락드리겠습니다.</p>
+        <a href="index.html" class="back-button">메인으로 돌아가기</a>
+    </div>
+
+    <script>
+        // 리퍼러 정보 가져오기
+        const referrer = document.referrer;
+        
+        // 서버로 리퍼러 정보 전송
+        fetch('https://your-server.com/track', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                referrer: referrer,
+                timestamp: new Date().toISOString(),
+                page: 'thank-you'
+            })
+        });
+
+        // 콘솔에 리퍼러 출력 (테스트용)
+        console.log('방문자가 온 경로:', referrer);
+    </script>
+</body>
+</html> 
