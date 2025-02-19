@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약 완료 - 인지 치료센터</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PLBRL989');</script>
+    <!-- End Google Tag Manager -->
     <link rel="stylesheet" href="style.css">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -13,32 +20,21 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
         
-        // 리퍼러 정보 가져오기
+        // 리퍼러 정보 가져오기 및 전환 이벤트 발생
         const referrer = document.referrer;
-        
-        // 더 자세한 전환 이벤트 발생
         gtag('event', 'conversion', {
             'event_category': '예약',
             'event_label': '예약 완료',
-            'referrer_url': referrer,  // 실제 참조 URL 추가
+            'referrer_url': referrer,
             'referrer_details': {
                 'full_url': referrer,
                 'timestamp': new Date().toISOString()
             }
         });
-    </script>
-</head>
-<body>
-    <div class="thank-you-container">
-        <h1>예약이 완료되었습니다</h1>
-        <p>곧 담당자가 연락드리겠습니다.</p>
-        <a href="index.html" class="back-button">메인으로 돌아가기</a>
-    </div>
 
-    <script>
-        // 리퍼러 정보 가져오기
-        const referrer = document.referrer;
-        
+        // 콘솔에 리퍼러 출력 (테스트용)
+        console.log('방문자가 온 경로:', referrer);
+
         // 서버로 리퍼러 정보 전송
         fetch('https://your-server.com/track', {
             method: 'POST',
@@ -51,9 +47,18 @@
                 page: 'thank-you'
             })
         });
-
-        // 콘솔에 리퍼러 출력 (테스트용)
-        console.log('방문자가 온 경로:', referrer);
     </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLBRL989"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="thank-you-container">
+        <h1>예약이 완료되었습니다</h1>
+        <p>곧 담당자가 연락드리겠습니다.</p>
+        <a href="index.html" class="back-button">메인으로 돌아가기</a>
+    </div>
 </body>
 </html> 
